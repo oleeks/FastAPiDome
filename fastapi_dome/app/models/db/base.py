@@ -2,8 +2,10 @@ from datetime import datetime
 
 import shortuuid
 
-from app.exts import db
-from app.utils.tools import time2str
+from fastapi_dome.app.ext import db
+from fastapi_dome.app.utils.tools import time2str
+
+
 class BaseModel(db.Model):
     __abstract__ = True
     id = db.Column(db.String(100), primary_key=True, default=shortuuid.uuid)

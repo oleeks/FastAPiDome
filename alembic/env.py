@@ -9,7 +9,7 @@ from alembic import context
 BASE_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 os.sys.path.append(BASE_DIR)
 
-from fastapi_dome.app.ext import db
+from fastapi_dome.app.models.db import db
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
