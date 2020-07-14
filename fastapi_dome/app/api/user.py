@@ -1,8 +1,8 @@
 from fastapi import APIRouter
 from typing import List
 
-from app.models.db.user import User
-from app.models.schemas.user import UserInModel, UserOutModel
+from fastapi_dome.app.models.table import User
+from fastapi_dome.app.models.schemas.user import UserInModel, UserOutModel
 
 user_router = APIRouter()
 
@@ -17,7 +17,10 @@ async def get_users():
 
 @user_router.post("/user")
 async def add_user(user: UserInModel):
-    rv = await User.create(nickname=user.name)
+    nickname = user.nickname
+    print(nickname)
+
+    rv = await User.create(name='nickname')
     return rv.to_dict()
 
 
