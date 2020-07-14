@@ -22,13 +22,13 @@ async def add_user(user: UserInModel):
 
 
 @user_router.get("/user/{uid}")
-async def get_user(uid: int):
+async def get_user(uid: str):
     user = await User.get_or_404(uid)
     return user.to_dict()
 
 
 @user_router.delete("/user/{uid}")
-async def delete_user(uid: int):
+async def delete_user(uid: str):
     user = await User.get_or_404(uid)
     await user.delete()
     return dict(id=uid)
