@@ -1,5 +1,10 @@
 # FastAPiDome
 FastAPi+Gino+MySql
+
+### 安装(Installation)
+ - 安装FastApi `pip install FastApi[all]`
+ - 安装支持mysql的gino模块 `pip install git+https://github.com/wwwjfy/gino.git@mysql-support`
+ 
 ```
 fastapi_dome
 ├─ __init__.py
