@@ -1,5 +1,5 @@
-from app.core.mgino import Gino
-from app.config import db_config
+from fastapi_dome.app.core.mgino import Gino
+from fastapi_dome.app.config import db_config
 
 db = Gino(
     dsn=db_config.DB_DSN,
