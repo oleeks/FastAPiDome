@@ -1,4 +1,5 @@
 import os
+import sys
 from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
@@ -7,14 +8,15 @@ from sqlalchemy import pool
 from alembic import context
 
 BASE_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-os.sys.path.append(BASE_DIR)
+sys.path.append(BASE_DIR)
 
-from fastapi_dome.app.models.db import db
+from app.models import db
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
 
-# Interpret the config file for Python logging.
+# Interpret the setting file for Python logging.
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)
 
@@ -24,9 +26,10 @@ fileConfig(config.config_file_name)
 # target_metadata = mymodel.Base.metadata
 target_metadata = db
 
-# other values from the config, defined by the needs of env.py,
+
+# other values from the setting, defined by the needs of env.py,
 # can be acquired:
-# my_important_option = config.get_main_option("my_important_option")
+# my_important_option = setting.get_main_option("my_important_option")
 # ... etc.
 
 
