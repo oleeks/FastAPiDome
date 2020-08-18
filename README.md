@@ -1,6 +1,7 @@
 # FastAPiDome
 
-最近比较火，就试着用 FastAPi+Gino+MySql搞了个dome,做个参考吧
+最近比较火，就试着用 FastAPi+Gino+MySql搞了个dome,做个参考
+交流群：1031324860
 
 ### 项目结构
 
