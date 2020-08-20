@@ -37,14 +37,14 @@ async def add_user(user_in: user.AdminUserCreate, current_user: AdminUser = Depe
     return user_in
 
 
-@router.post("/all", response_model=List[user.AdminUserInfo])
-# @router.post("/all", summary="获取所有用户信息", response_model=user.AllAdminUser)
+# @router.post("/all", response_model=List[user.AdminUserInfo])
+@router.post("/all", summary="获取所有用户信息", response_model=user.AllAdminUser)
 async def get_user_all(
         page: common.Page,
-        # current_user: AdminUser = Depends(get_current_admin)
+        current_user: AdminUser = Depends(get_current_admin)
 ):
-    # if not curd_admin.is_superuser(current_user):
-    #     return AuthFailedResponse(content="权限不足")
+    if not curd_admin.is_superuser(current_user):
+        return AuthFailedResponse(content="权限不足")
     user_count = await curd_admin.count
     user_all = await curd_admin.get_multi(skip=page.page, limit=page.size)
 
