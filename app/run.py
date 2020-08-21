@@ -1,6 +1,8 @@
 import uvicorn
+import os
 
-import logging
+BASE_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+os.sys.path.append(BASE_DIR)
 
 from app.api import create_app
 

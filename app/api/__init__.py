@@ -1,3 +1,4 @@
+import time
 import traceback
 
 from fastapi import FastAPI, Request, status
@@ -97,7 +98,8 @@ def register_exception(app: FastAPI):
         :return:
         """
         data = exc.detail
-        logger.error(f"请求异常\nURL:{request.url}\nHeaders:{request.headers}\n{data}")
+        logger.error(
+            f"请求异常\nURL:{request.url}\nHeaders:{request.headers}\n{data}")
         return NotFoundResponse(content=data)
 
     # 捕获参数 验证错误
@@ -112,15 +114,28 @@ def register_exception(app: FastAPI):
 
         data = exc.errors()[0]["msg"]
         print(traceback.format_exc())
-        logger.error(f"参数错误\nURL:{request.url}\nHeaders:{request.headers}\n{exc.errors()[0]['loc']}\n{data}")
+        logger.error(
+            f"参数错误\nURL:{request.url}\nHeaders:{request.headers}\n{exc.errors()[0]['loc']}\n{data}")
         return ValidationErrorResponse(content=exc.errors()[0]['loc'])
 
     # 捕获全部异常
     @app.exception_handler(CustomizeBase)
     async def all_exception_handler(request: Request, exc: CustomizeBase):
-        logger.error(f"全局异常\nURL:{request.url}\nHeaders:{request.headers}\n{exc.err_desc}\n")
+        logger.error(
+            f"全局异常\nURL:{request.url}\nHeaders:{request.headers}\n{exc.err_desc}\n")
         # return CORJSONResponse(msg='111111', msg_code=1234)
         return ServerErrorResponse(msg=exc.err_desc)
+
+
+def register_http(app: FastAPI):
+    @app.middleware("http")
+    async def add_process_time_header(request: Request, call_next):
+        start_time = time.time()
+        response = await call_next(request)
+        process_time = time.time() - start_time
+        # response.headers["X-Process-Time"] = str(process_time)
+        print(process_time)
+        return response
 
 
 def register_cors(app: FastAPI):
