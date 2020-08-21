@@ -1,5 +1,4 @@
 from typing import List, Optional
-from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 from fastapi import APIRouter, Depends
 
 from app.core.deps import get_current_admin
@@ -9,7 +8,6 @@ from app.core.responses import AuthFailedResponse, ValidationErrorResponse
 from app.schemas import user, common
 
 from app.api.admin.curd.user import curd_admin
-from app.utils.exceptions import CustomizeBase
 
 router = APIRouter()
 
