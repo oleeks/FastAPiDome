@@ -47,3 +47,5 @@ async def get_user_all(
     user_all = await curd_admin.get_multi(skip=page.page, limit=page.size)
 
     return {"count": user_count, "users": user_all}
+
+

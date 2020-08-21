@@ -7,7 +7,8 @@ from fastapi.exceptions import RequestValidationError, StarletteHTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.v1 import api_v1
-from app.api.admin import api_admin
+from app.api.admin import admin_api
+from app.api.common import common_api
 from app.exts import mredis, mgino
 
 from app.setting import config
@@ -41,9 +42,14 @@ def create_app():
         tags=['api']
     )
     app.include_router(
-        api_admin,
+        admin_api,
         prefix="/admin",
         tags=['admin'],
+    )
+    app.include_router(
+        common_api,
+        prefix="/common",
+        tags=['common'],
     )
 
     register_exception(app)
