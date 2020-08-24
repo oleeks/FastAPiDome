@@ -4,10 +4,9 @@ def generate_secret_key() -> str:
     """
     generate google key
     """
-    
     return pyotp.random_base32()
 
-def verify_code(secret_key, verify_code) -> bool:
+def verify_code(secret_key:str, verify_code:str) -> bool:
     """
     Verify that the google code is correct
     :param secret_key: google secret key
