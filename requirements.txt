@@ -16,7 +16,7 @@ cryptography==2.9.2
 dnspython==1.16.0
 ecdsa==0.15
 email-validator==1.1.1
-fastapi==0.61.0
+fastapi==0.65.2
 gino @ git+https://github.com/wwwjfy/gino.git@3cf684be7e049d56e526c89d25c3f11dea2feff3
 gino-starlette==0.1.1
 graphene==2.1.8
