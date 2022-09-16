@@ -29,7 +29,7 @@ idna @ file:///home/conda/feedstock_root/build_artifacts/idna_1593328102638/work
 importlib-metadata @ file:///home/conda/feedstock_root/build_artifacts/importlib-metadata_1593211370946/work
 itsdangerous==1.1.0
 Jinja2==2.11.2
-Mako==1.1.3
+Mako==1.2.2
 MarkupSafe==1.1.1
 mysqlclient==1.4.6
 orjson @ file:///home/conda/feedstock_root/build_artifacts/orjson_1594695942636/work
